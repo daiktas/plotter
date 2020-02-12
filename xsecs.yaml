@@ -1,0 +1,21 @@
+HeavyNeutrino_lljj_M-4_V-0_00183575597507_mu_Dirac_Moriond17: 1.774e-02
+HeavyNeutrino_lljj_M-8_V-0_000415932686862_mu_Dirac_Moriond17: 9.257e-04
+TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8 : 831.76
+WJetsToLNu_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8: 61526.7
+DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8: 5765.4
+DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8: 18610.0
+QCD_Pt-15to20_MuEnriched: 3819570.0
+QCD_Pt-20to30_MuEnriched: 2960198.0
+QCD_Pt-30to50_MuEnriched: 1652471.0
+QCD_Pt-50to80_MuEnriched: 4.38E+05
+QCD_Pt-80to120_MuEnriched: 1.06E+05
+QCD_Pt-120to170_MuEnriched: 2.52E+04
+QCD_Pt-170to300_MuEnriched: 8654.0
+QCD_Pt-300to470_MuEnriched: 797.0
+QCD_Pt-470to600_MuEnriched: 78.91
+QCD_Pt-600to800_MuEnriched: 25.095
+QCD_Pt-800to1000_MuEnriched: 4.707
+QCD_Pt-1000toInf_MuEnriched: 1.621
+WToLNu_0J: 4.95E+04
+WToLNu_1J: 9.49E+03
+WToLNu_2J: 3.12E+03
