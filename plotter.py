@@ -7,7 +7,7 @@ import json
 import yaml
 
 # path to processed nanoAOD ntuples
-ntuple_path = "/vols/cms/vc1117/LLP/nanoAOD_friends/HNL/06Feb20/"
+ntuple_path = "/vols/cms/vc1117/LLP/nanoAOD_friends/HNL/27Feb20/"
 lumi = 35.88
 
 def find_xsec(path, xsecs):
@@ -24,8 +24,8 @@ with open("xsecs.yaml") as yaml_file:
 
 # Define categories by cuts for plotting
 categories = {}
-categories["mu1mu2jet_"] = "(ntightMuons == 1)*(nlooseMuons == 1)"
-categories["mu1mu2jet_dimuoncut_"] = "(ntightMuons == 1)*(nlooseMuons == 1)*(lepJet_deltaR<0.4)*(dimuon_mass < 80.)*(dimuon_mass > 30.)*(dimuon_deltaR>1.)*(dimuon_deltaR<5.)"
+#categories["mu1mu2jet_"] = "(ntightMuons == 1)*(nlooseMuons == 1)"
+categories["mu1mu2jet_DY_CR_"] = "(ntightMuons == 1)*(nlooseMuons == 1)*(lepJet_deltaR<0.4)*(dimuon_mass > 90.)*(dimuon_deltaR>1.)*(dimuon_deltaR<5.)"
 
 # This class is responsible for making the histogram and plotting it for a given variable
 class Variable:
@@ -33,61 +33,97 @@ class Variable:
         self.varexp = varexp
         self.args = (varexp, varexp, nbins, xmin, xmax)
         self.stack = ROOT.THStack(varexp, varexp)
+        self.sumMC = ROOT.TH1F(name, name, nbins, xmin, xmax)
         self.signals = []
+        self.data = None
         self.name = name
         self.logy = logy
         self.leg = makeLegend(0.4, 0.70, 0.7, 0.88)
         self.leg.SetTextSize(self.leg.GetTextSize()*0.8)
-    def Add(self, hist, title, isSignal=False):
+        self.xmin = xmin
+        self.xmax = xmax
+    def Add(self, hist, title, isSignal=False, isData=False):
+        hist.SetDirectory(0)
         if isSignal:
             self.signals.append(hist)
             hist.SetLineStyle(len(self.signals))
             self.leg.AddEntry(hist, title, "l")
+        elif isData:
+            self.data = hist
+            self.leg.AddEntry(hist, title, "p")
         else:
             self.stack.Add(hist)
+            self.sumMC.Add(hist)
             self.leg.AddEntry(hist, title, "f")
     def Draw(self, suffix, opt):
         print ("plotting "+self.varexp)
-        self.canvas = makeCanvas(name=self.varexp)
-        self.canvas.Draw()
-        self.canvas.SetBottomMargin(0.15)
-        self.canvas.SetLeftMargin(0.1)
-        self.canvas.SetTopMargin(0.08)
+        canvas = makeCanvas(name=self.varexp)
+        upperPad = ROOT.TPad("upperPad", "upperPad", 0, 0.33, 1, 1)
+        lowerPad = ROOT.TPad("lowerPad", "lowerPad", 0, 0, 1, 0.33)
+        upperPad.SetBottomMargin(0.00001)
+        upperPad.SetBorderMode(0)
+        upperPad.SetTopMargin(0.15)
+        lowerPad.SetTopMargin(0.00001)
+        lowerPad.SetBottomMargin(0.4)
+        lowerPad.SetBorderMode(0)
+        canvas.SetBottomMargin(0.2)
+        canvas.SetTopMargin(0.1)
+        upperPad.Draw()
+        lowerPad.Draw()
+        upperPad.cd()
+
         self.stack.Draw(opt)
-        self.stack.GetXaxis().SetTitle(self.name)
         self.stack.SetMinimum(1)
         if self.logy:
             self.stack.SetMaximum(self.stack.GetMaximum()*1000)
-            self.canvas.SetLogy()
+            upperPad.SetLogy()
         else:
             self.stack.SetMaximum(self.stack.GetMaximum()*1.6)
         for signal in self.signals:
             signal.SetFillStyle(0)
             signal.Draw("HIST SAME")
+        self.data.Draw("P SAME")
+        self.hist_ratio = self.data.Clone("ratio histogram")
+        self.hist_ratio.Divide(self.sumMC) 
+        lowerPad.cd()
+        self.hist_ratio.SetMinimum(0.5)
+        self.hist_ratio.SetMaximum(1.5)
+        self.hist_ratio.GetXaxis().SetTitle(self.name)
+        self.hist_ratio.GetXaxis().SetTitleOffset(2.5)
+        self.hist_ratio.Draw("P")
+
+        line = ROOT.TLine(self.xmin, 1, self.xmax, 1)
+        line.Draw("SAME")
+
+        canvas.cd()
         self.leg.Draw("SAME")
         makeCMSText(0.13, 0.97,additionalText="Simulation Preliminary")
         makeText(0.13, 0.78, 0.4, 0.78, "#mu_{1}#mu_{2}")
         makeLumiText(0.7, 0.97)
-        self.canvas.Modified()
-        self.canvas.SaveAs("plots/"+suffix+self.varexp+".pdf")
+        canvas.SaveAs("plots/"+suffix+self.varexp+".pdf")
 
 # This class prepares a given sample by scaling to int. luminosity
 class Sample:
-    def __init__(self, name, paths):
+    def __init__(self, name, paths, isMC=True):
         self.paths = paths
         self.name = name
         self.file_list = ROOT.std.vector('string')()
         self.sum_weight = 0
+        self.isMC = isMC
         for path in self.paths:
             for f in os.listdir(os.path.join(ntuple_path, path)):
                 self.file_list.push_back(os.path.join(ntuple_path, path, f))
-            self.sum_weight += yields[path]
+            if self.isMC:
+                self.sum_weight += yields[path]["weighted"]
         self.rdf = ROOT.RDataFrame("Friends", self.file_list)
-        self.rdf = self.rdf.Define("weightLumi", "genweight*%s*1000.0*%s/%s" %(lumi, find_xsec(path, xsecs), self.sum_weight))
+        if self.isMC:
+            self.rdf = self.rdf.Define("weightLumi", "genweight*tightMuons_weight_iso_nominal*tightMuons_weight_id_nominal*%s*1000.0*%s/%s" %(lumi, find_xsec(path, xsecs), self.sum_weight))
+        else:
+            self.rdf = self.rdf.Define("weightLumi", "1")
         for category, weight in categories.items():
             self.rdf = self.rdf.Define(category, "weightLumi*%s" %(weight))
         self.hists = []
-        print("RDF has entries: "+str(self.rdf.Count().GetValue()))
+        print("RDF "+name+ " has entries: "+str(self.rdf.Count().GetValue()))
 
 # A process is a combination of several "Samples" which are all added up internally
 class Process:
@@ -118,7 +154,7 @@ class Process:
         return self.hists[-1]
 
 
-w0jets = Sample("wjets", ["WToLNu_0J_13TeV-amcatnloFXFX-pythia8-2016"])
+w0jets = Sample("w0jets", ["WToLNu_0J_13TeV-amcatnloFXFX-pythia8-2016"])
 w1jets = Sample("w1jets", ["WToLNu_1J_13TeV-amcatnloFXFX-pythia8-2016"])
 w2jets = Sample("w2jets", ["WToLNu_2J_13TeV-amcatnloFXFX-pythia8-ext4-2016"])
 dy10to50 = Sample("dy10to50",  ["DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8-2016"])
@@ -140,6 +176,14 @@ qcd_1000toInf = Sample("qcd_1000toInf", ["QCD_Pt-1000toInf_MuEnrichedPt5_TuneCUE
 hnlM4_V0p00183575597507 = Sample("HNL2", ["HeavyNeutrino_lljj_M-4_V-0_00183575597507_mu_Dirac_Moriond17_aug2018_miniAODv3-2016"])
 hnlM8_V0p000415932686862 = Sample("HNL", ["HeavyNeutrino_lljj_M-8_V-0_000415932686862_mu_Dirac_Moriond17_aug2018_miniAODv3-2016"])
 
+runb = Sample("Run2016B", ["SingleMuon_Run2016B_ver2"], isMC=False)
+runc = Sample("Run2016C", ["SingleMuon_Run2016C"], isMC=False)
+rund = Sample("Run2016D", ["SingleMuon_Run2016D"], isMC=False)
+rune = Sample("Run2016E", ["SingleMuon_Run2016E"], isMC=False)
+runf = Sample("Run2016F", ["SingleMuon_Run2016F"], isMC=False)
+rung = Sample("Run2016G", ["SingleMuon_Run2016G"], isMC=False)
+runh = Sample("Run2016H", ["SingleMuon_Run2016H"], isMC=False)
+
 wjets = Process("W+Jets", "W+jets", "#388e3c")
 wjets.add(w0jets, w1jets, w2jets)
 dyjets = Process("DY+Jets", "DY+Jets", "#1976d2")
@@ -153,25 +197,28 @@ hnl2.add(hnlM4_V0p00183575597507)
 qcd = Process("qcd", "QCD", "#bdbdbd")
 qcd.add(qcd_15to20, qcd_20to30, qcd_30to50, qcd_50to80, qcd_80to120, qcd_120to170, qcd_170to300, qcd_300to470, qcd_470to600, qcd_600to800, qcd_800to1000, qcd_1000toInf)
 
-processes = [wjets, dyjets, tt, qcd, hnl1, hnl2]
-# add QCD
+data = Process("data", "data", "#000000")
+data.add(runb, runc, rund, rune, runf, rung, runh)
+processes = [wjets, dyjets, tt, qcd, data]
 
 
 for suffix, weight in categories.items():
+    print(weight)
     with open("variables.yaml") as yaml_file:
         variables = yaml.load(yaml_file, Loader=yaml.FullLoader)
-        print(variables)
     for variable in variables:
+        print(variable)
         variable = Variable(*variable)
-        print(variable.name)
-        if os.path.exists("plots/"+suffix+variable.varexp+".pdf"):
-            print("skipping")
-            continue
+        print(variable.args, variable.varexp)
         for process in processes:
             print(process.name)
             if "HNL" in process.name:
                 isSignal = True
             else:
                 isSignal = False
-            variable.Add(process.Histo1D(variable.args, variable.varexp, weight), process.title, isSignal=isSignal)
+            if process.name == "data":
+                isData = True
+            else:
+                isData = False
+            variable.Add(process.Histo1D(variable.args, variable.varexp, suffix), process.title, isSignal=isSignal, isData=isData)
         variable.Draw(suffix, "hist")

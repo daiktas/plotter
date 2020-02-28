@@ -1,67 +1,522 @@
 {
-  "DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8-2016": 920788844943.707, 
-  "DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8-ext1-2016": 1217342440050.0078, 
-  "DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8-ext2-2016": 1867112667824.9727, 
-  "HeavyNeutrino_lljj_M-10_V-0_000208566536146_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 249936.0, 
-  "HeavyNeutrino_lljj_M-10_V-0_00107238052948_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 171952.0, 
-  "HeavyNeutrino_lljj_M-10_V-0_00112249721603_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 229936.0, 
-  "HeavyNeutrino_lljj_M-15_V-3_02158898595e-05_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 149966.0, 
-  "HeavyNeutrino_lljj_M-15_V-6_76017751246e-05_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 149968.0, 
-  "HeavyNeutrino_lljj_M-1_V-0_13416407865_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 137974.0, 
-  "HeavyNeutrino_lljj_M-1_V-0_300333148354_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 149970.0, 
-  "HeavyNeutrino_lljj_M-20_V-1_22474487139e-05_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 149968.0, 
-  "HeavyNeutrino_lljj_M-20_V-2_73495886624e-05_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 149968.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_00244948974278_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 5000.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_00282842712475_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 4998.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_00316227766017_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 5000.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_004472135955_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 4996.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_00547722557505_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 4998.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_00707106781187_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 4998.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_00836660026534_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 94982.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_0137840487521_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 149970.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_0157162336455_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 124984.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_01_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 4998.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_0307896086367_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 125974.0, 
-  "HeavyNeutrino_lljj_M-2_V-0_0350713558335_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 18010.0, 
-  "HeavyNeutrino_lljj_M-3_V-0_00443846820423_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 108974.0, 
-  "HeavyNeutrino_lljj_M-3_V-0_0140356688476_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 127968.0, 
-  "HeavyNeutrino_lljj_M-3_V-0_01_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 45008.0, 
-  "HeavyNeutrino_lljj_M-4_V-0_00183575597507_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 127980.0, 
-  "HeavyNeutrino_lljj_M-4_V-0_00354964786986_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 148972.0, 
-  "HeavyNeutrino_lljj_M-4_V-0_00411096095822_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 36004.0, 
-  "HeavyNeutrino_lljj_M-4_V-0_00707106781187_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 59984.0, 
-  "HeavyNeutrino_lljj_M-4_V-0_0101980390272_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 104982.0, 
-  "HeavyNeutrino_lljj_M-4_V-0_0141421356237_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 99974.0, 
-  "HeavyNeutrino_lljj_M-4_V-0_01_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 98974.0, 
-  "HeavyNeutrino_lljj_M-5_V-0_000920326029187_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 107980.0, 
-  "HeavyNeutrino_lljj_M-5_V-0_00178044938148_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 148972.0, 
-  "HeavyNeutrino_lljj_M-5_V-0_00205669638012_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 32006.0, 
-  "HeavyNeutrino_lljj_M-5_V-0_0065574385243_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 88984.0, 
-  "HeavyNeutrino_lljj_M-5_V-0_01_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 5000.0, 
-  "HeavyNeutrino_lljj_M-6_V-0_000522494019105_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 126978.0, 
-  "HeavyNeutrino_lljj_M-6_V-0_00101488915651_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 129978.0, 
-  "HeavyNeutrino_lljj_M-6_V-0_00286356421266_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 54992.0, 
-  "HeavyNeutrino_lljj_M-6_V-0_00299666481275_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 149976.0, 
-  "HeavyNeutrino_lljj_M-8_V-0_000415932686862_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 163962.0, 
-  "HeavyNeutrino_lljj_M-8_V-0_00214242852856_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 41990.0, 
-  "HeavyNeutrino_lljj_M-8_V-0_00363318042492_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": 177962.0, 
-  "QCD_Pt-1000toInf_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": 8477773.0, 
-  "QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": 7897935.342900276, 
-  "QCD_Pt-15to20_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": 3851343.0, 
-  "QCD_Pt-170to300_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia-2016": 5518564.0, 
-  "QCD_Pt-20to30_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": 31879148.716462612, 
-  "QCD_Pt-300to470_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": 15052853.0, 
-  "QCD_Pt-30to50_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": 29664852.029524326, 
-  "QCD_Pt-470to600_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": 7485112.805141449, 
-  "QCD_Pt-50to80_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": 19662175.0, 
-  "QCD_Pt-600to800_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": 2323243.0, 
-  "QCD_Pt-800to1000_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": 8805687.388320923, 
-  "QCD_Pt-80to120_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": 9810896.561326027, 
-  "TTJets_TuneCUETP8M1_13TeV-madgraphMLM-pythia8-2016": 6839796.0, 
-  "TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8-2016": 4891398521.702164, 
-  "TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8-2016": 15708895243.415161, 
-  "WToLNu_0J_13TeV-amcatnloFXFX-pythia8-2016": 2879018287830.25, 
-  "WToLNu_0J_13TeV-amcatnloFXFX-pythia8-ext1-2016": 2872132028530.5, 
-  "WToLNu_1J_13TeV-amcatnloFXFX-pythia8-2016": 1806204015132.9219, 
-  "WToLNu_2J_13TeV-amcatnloFXFX-pythia8-ext4-2016": 3964221318651.633
+  "DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8-2016": {
+    "eff": 22218281.0, 
+    "neg": 4158657.0, 
+    "negfrac": 0.13619046886101285, 
+    "pos": 26376938.0, 
+    "sum": 30535595.0, 
+    "weighted": 920784329073.4688
+  }, 
+  "DYJetsToLL_M-10to50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8-ext1-2016": {
+    "eff": 29374008.0, 
+    "neg": 5495113.0, 
+    "negfrac": 0.1361381712334737, 
+    "pos": 34869121.0, 
+    "sum": 40364234.0, 
+    "weighted": 1217336847039.1758
+  }, 
+  "DYJetsToLL_M-50_TuneCUETP8M1_13TeV-amcatnloFXFX-pythia8-ext2-2016": {
+    "eff": 79648634.0, 
+    "neg": 19611360.0, 
+    "negfrac": 0.1649796972952794, 
+    "pos": 99259994.0, 
+    "sum": 118871354.0, 
+    "weighted": 1867104562364.0
+  }, 
+  "HeavyNeutrino_lljj_M-10_V-0_000208566536146_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 249936.0, 
+    "neg": 32.0, 
+    "negfrac": 0.000128, 
+    "pos": 249968.0, 
+    "sum": 250000.0, 
+    "weighted": 249936.0
+  }, 
+  "HeavyNeutrino_lljj_M-10_V-0_00107238052948_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 171952.0, 
+    "neg": 24.0, 
+    "negfrac": 0.00013953488372093022, 
+    "pos": 171976.0, 
+    "sum": 172000.0, 
+    "weighted": 171952.0
+  }, 
+  "HeavyNeutrino_lljj_M-10_V-0_00112249721603_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 229936.0, 
+    "neg": 32.0, 
+    "negfrac": 0.00013913043478260868, 
+    "pos": 229968.0, 
+    "sum": 230000.0, 
+    "weighted": 229936.0
+  }, 
+  "HeavyNeutrino_lljj_M-15_V-3_02158898595e-05_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 149966.0, 
+    "neg": 17.0, 
+    "negfrac": 0.00011333333333333333, 
+    "pos": 149983.0, 
+    "sum": 150000.0, 
+    "weighted": 149966.0
+  }, 
+  "HeavyNeutrino_lljj_M-15_V-6_76017751246e-05_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 149968.0, 
+    "neg": 16.0, 
+    "negfrac": 0.00010666666666666667, 
+    "pos": 149984.0, 
+    "sum": 150000.0, 
+    "weighted": 149968.0
+  }, 
+  "HeavyNeutrino_lljj_M-1_V-0_13416407865_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 137974.0, 
+    "neg": 13.0, 
+    "negfrac": 9.420289855072463e-05, 
+    "pos": 137987.0, 
+    "sum": 138000.0, 
+    "weighted": 137974.0
+  }, 
+  "HeavyNeutrino_lljj_M-1_V-0_300333148354_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 149970.0, 
+    "neg": 15.0, 
+    "negfrac": 0.0001, 
+    "pos": 149985.0, 
+    "sum": 150000.0, 
+    "weighted": 149970.0
+  }, 
+  "HeavyNeutrino_lljj_M-20_V-1_22474487139e-05_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 149968.0, 
+    "neg": 16.0, 
+    "negfrac": 0.00010666666666666667, 
+    "pos": 149984.0, 
+    "sum": 150000.0, 
+    "weighted": 149968.0
+  }, 
+  "HeavyNeutrino_lljj_M-20_V-2_73495886624e-05_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 149968.0, 
+    "neg": 16.0, 
+    "negfrac": 0.00010666666666666667, 
+    "pos": 149984.0, 
+    "sum": 150000.0, 
+    "weighted": 149968.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_00244948974278_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 5000.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 5000.0, 
+    "sum": 5000.0, 
+    "weighted": 5000.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_00282842712475_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 4998.0, 
+    "neg": 1.0, 
+    "negfrac": 0.0002, 
+    "pos": 4999.0, 
+    "sum": 5000.0, 
+    "weighted": 4998.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_00316227766017_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 5000.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 5000.0, 
+    "sum": 5000.0, 
+    "weighted": 5000.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_004472135955_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 4996.0, 
+    "neg": 2.0, 
+    "negfrac": 0.0004, 
+    "pos": 4998.0, 
+    "sum": 5000.0, 
+    "weighted": 4996.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_00547722557505_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 4998.0, 
+    "neg": 1.0, 
+    "negfrac": 0.0002, 
+    "pos": 4999.0, 
+    "sum": 5000.0, 
+    "weighted": 4998.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_00707106781187_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 4998.0, 
+    "neg": 1.0, 
+    "negfrac": 0.0002, 
+    "pos": 4999.0, 
+    "sum": 5000.0, 
+    "weighted": 4998.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_00836660026534_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 94982.0, 
+    "neg": 9.0, 
+    "negfrac": 9.473684210526316e-05, 
+    "pos": 94991.0, 
+    "sum": 95000.0, 
+    "weighted": 94982.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_0137840487521_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 149970.0, 
+    "neg": 15.0, 
+    "negfrac": 0.0001, 
+    "pos": 149985.0, 
+    "sum": 150000.0, 
+    "weighted": 149970.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_0157162336455_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 124984.0, 
+    "neg": 13.0, 
+    "negfrac": 0.00010399168066554675, 
+    "pos": 124997.0, 
+    "sum": 125010.0, 
+    "weighted": 124984.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_01_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 4998.0, 
+    "neg": 1.0, 
+    "negfrac": 0.0002, 
+    "pos": 4999.0, 
+    "sum": 5000.0, 
+    "weighted": 4998.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_0307896086367_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 125974.0, 
+    "neg": 13.0, 
+    "negfrac": 0.00010317460317460317, 
+    "pos": 125987.0, 
+    "sum": 126000.0, 
+    "weighted": 125974.0
+  }, 
+  "HeavyNeutrino_lljj_M-2_V-0_0350713558335_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 18010.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 18010.0, 
+    "sum": 18010.0, 
+    "weighted": 18010.0
+  }, 
+  "HeavyNeutrino_lljj_M-3_V-0_00443846820423_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 108974.0, 
+    "neg": 13.0, 
+    "negfrac": 0.00011926605504587155, 
+    "pos": 108987.0, 
+    "sum": 109000.0, 
+    "weighted": 108974.0
+  }, 
+  "HeavyNeutrino_lljj_M-3_V-0_0140356688476_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 127968.0, 
+    "neg": 16.0, 
+    "negfrac": 0.000125, 
+    "pos": 127984.0, 
+    "sum": 128000.0, 
+    "weighted": 127968.0
+  }, 
+  "HeavyNeutrino_lljj_M-3_V-0_01_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 45008.0, 
+    "neg": 1.0, 
+    "negfrac": 2.2217285047767163e-05, 
+    "pos": 45009.0, 
+    "sum": 45010.0, 
+    "weighted": 45008.0
+  }, 
+  "HeavyNeutrino_lljj_M-4_V-0_00183575597507_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 127980.0, 
+    "neg": 10.0, 
+    "negfrac": 7.8125e-05, 
+    "pos": 127990.0, 
+    "sum": 128000.0, 
+    "weighted": 127980.0
+  }, 
+  "HeavyNeutrino_lljj_M-4_V-0_00354964786986_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 148972.0, 
+    "neg": 14.0, 
+    "negfrac": 9.395973154362417e-05, 
+    "pos": 148986.0, 
+    "sum": 149000.0, 
+    "weighted": 148972.0
+  }, 
+  "HeavyNeutrino_lljj_M-4_V-0_00411096095822_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 36004.0, 
+    "neg": 3.0, 
+    "negfrac": 8.33101916134407e-05, 
+    "pos": 36007.0, 
+    "sum": 36010.0, 
+    "weighted": 36004.0
+  }, 
+  "HeavyNeutrino_lljj_M-4_V-0_00707106781187_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 59984.0, 
+    "neg": 8.0, 
+    "negfrac": 0.00013333333333333334, 
+    "pos": 59992.0, 
+    "sum": 60000.0, 
+    "weighted": 59984.0
+  }, 
+  "HeavyNeutrino_lljj_M-4_V-0_0101980390272_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 104982.0, 
+    "neg": 9.0, 
+    "negfrac": 8.571428571428571e-05, 
+    "pos": 104991.0, 
+    "sum": 105000.0, 
+    "weighted": 104982.0
+  }, 
+  "HeavyNeutrino_lljj_M-4_V-0_0141421356237_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 99974.0, 
+    "neg": 13.0, 
+    "negfrac": 0.00013, 
+    "pos": 99987.0, 
+    "sum": 100000.0, 
+    "weighted": 99974.0
+  }, 
+  "HeavyNeutrino_lljj_M-4_V-0_01_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 98974.0, 
+    "neg": 13.0, 
+    "negfrac": 0.0001313131313131313, 
+    "pos": 98987.0, 
+    "sum": 99000.0, 
+    "weighted": 98974.0
+  }, 
+  "HeavyNeutrino_lljj_M-5_V-0_000920326029187_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 107980.0, 
+    "neg": 10.0, 
+    "negfrac": 9.259259259259259e-05, 
+    "pos": 107990.0, 
+    "sum": 108000.0, 
+    "weighted": 107980.0
+  }, 
+  "HeavyNeutrino_lljj_M-5_V-0_00178044938148_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 148972.0, 
+    "neg": 14.0, 
+    "negfrac": 9.395973154362417e-05, 
+    "pos": 148986.0, 
+    "sum": 149000.0, 
+    "weighted": 148972.0
+  }, 
+  "HeavyNeutrino_lljj_M-5_V-0_00205669638012_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 32006.0, 
+    "neg": 2.0, 
+    "negfrac": 6.248047485160888e-05, 
+    "pos": 32008.0, 
+    "sum": 32010.0, 
+    "weighted": 32006.0
+  }, 
+  "HeavyNeutrino_lljj_M-5_V-0_0065574385243_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 88984.0, 
+    "neg": 8.0, 
+    "negfrac": 8.988764044943821e-05, 
+    "pos": 88992.0, 
+    "sum": 89000.0, 
+    "weighted": 88984.0
+  }, 
+  "HeavyNeutrino_lljj_M-5_V-0_01_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 5000.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 5000.0, 
+    "sum": 5000.0, 
+    "weighted": 5000.0
+  }, 
+  "HeavyNeutrino_lljj_M-6_V-0_000522494019105_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 126978.0, 
+    "neg": 11.0, 
+    "negfrac": 8.661417322834646e-05, 
+    "pos": 126989.0, 
+    "sum": 127000.0, 
+    "weighted": 126978.0
+  }, 
+  "HeavyNeutrino_lljj_M-6_V-0_00101488915651_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 129978.0, 
+    "neg": 11.0, 
+    "negfrac": 8.461538461538461e-05, 
+    "pos": 129989.0, 
+    "sum": 130000.0, 
+    "weighted": 129978.0
+  }, 
+  "HeavyNeutrino_lljj_M-6_V-0_00286356421266_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 54992.0, 
+    "neg": 4.0, 
+    "negfrac": 7.272727272727273e-05, 
+    "pos": 54996.0, 
+    "sum": 55000.0, 
+    "weighted": 54992.0
+  }, 
+  "HeavyNeutrino_lljj_M-6_V-0_00299666481275_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 149976.0, 
+    "neg": 12.0, 
+    "negfrac": 8e-05, 
+    "pos": 149988.0, 
+    "sum": 150000.0, 
+    "weighted": 149976.0
+  }, 
+  "HeavyNeutrino_lljj_M-8_V-0_000415932686862_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 163962.0, 
+    "neg": 19.0, 
+    "negfrac": 0.00011585365853658536, 
+    "pos": 163981.0, 
+    "sum": 164000.0, 
+    "weighted": 163962.0
+  }, 
+  "HeavyNeutrino_lljj_M-8_V-0_00214242852856_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 41990.0, 
+    "neg": 5.0, 
+    "negfrac": 0.00011904761904761905, 
+    "pos": 41995.0, 
+    "sum": 42000.0, 
+    "weighted": 41990.0
+  }, 
+  "HeavyNeutrino_lljj_M-8_V-0_00363318042492_mu_Dirac_Moriond17_aug2018_miniAODv3-2016": {
+    "eff": 177962.0, 
+    "neg": 19.0, 
+    "negfrac": 0.00010674157303370786, 
+    "pos": 177981.0, 
+    "sum": 178000.0, 
+    "weighted": 177962.0
+  }, 
+  "QCD_Pt-1000toInf_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": {
+    "eff": 8477773.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 8477773.0, 
+    "sum": 8477773.0, 
+    "weighted": 8477773.0
+  }, 
+  "QCD_Pt-120to170_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": {
+    "eff": 7897731.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 7897731.0, 
+    "sum": 7897731.0, 
+    "weighted": 7897935.342900276
+  }, 
+  "QCD_Pt-15to20_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": {
+    "eff": 3851343.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 3851343.0, 
+    "sum": 3851343.0, 
+    "weighted": 3851343.0
+  }, 
+  "QCD_Pt-170to300_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia-2016": {
+    "eff": 5518564.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 5518564.0, 
+    "sum": 5518564.0, 
+    "weighted": 5518564.0
+  }, 
+  "QCD_Pt-20to30_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": {
+    "eff": 31878740.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 31878740.0, 
+    "sum": 31878740.0, 
+    "weighted": 31879148.716462612
+  }, 
+  "QCD_Pt-300to470_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": {
+    "eff": 15052853.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 15052853.0, 
+    "sum": 15052853.0, 
+    "weighted": 15052853.0
+  }, 
+  "QCD_Pt-30to50_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": {
+    "eff": 29664458.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 29664458.0, 
+    "sum": 29664458.0, 
+    "weighted": 29664852.029524326
+  }, 
+  "QCD_Pt-470to600_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": {
+    "eff": 7485083.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 7485083.0, 
+    "sum": 7485083.0, 
+    "weighted": 7485112.805141449
+  }, 
+  "QCD_Pt-50to80_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": {
+    "eff": 19662175.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 19662175.0, 
+    "sum": 19662175.0, 
+    "weighted": 19662175.0
+  }, 
+  "QCD_Pt-600to800_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": {
+    "eff": 2323243.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 2323243.0, 
+    "sum": 2323243.0, 
+    "weighted": 2323243.0
+  }, 
+  "QCD_Pt-800to1000_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": {
+    "eff": 8805687.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 8805687.0, 
+    "sum": 8805687.0, 
+    "weighted": 8805687.388320923
+  }, 
+  "QCD_Pt-80to120_MuEnrichedPt5_TuneCUETP8M1_13TeV_pythia8-2016": {
+    "eff": 9809949.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 9809949.0, 
+    "sum": 9809949.0, 
+    "weighted": 9810896.561326027
+  }, 
+  "TTJets_TuneCUETP8M1_13TeV-madgraphMLM-pythia8-2016": {
+    "eff": 6839796.0, 
+    "neg": 0.0, 
+    "negfrac": 0.0, 
+    "pos": 6839796.0, 
+    "sum": 6839796.0, 
+    "weighted": 6839796.0
+  }, 
+  "TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8-2016": {
+    "eff": 67312164.0, 
+    "neg": 274118.0, 
+    "negfrac": 0.004039439791100554, 
+    "pos": 67586282.0, 
+    "sum": 67860400.0, 
+    "weighted": 4891398315.934143
+  }, 
+  "TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8-2016": {
+    "eff": 51804450.0, 
+    "neg": 210525.0, 
+    "negfrac": 0.004031076772840854, 
+    "pos": 52014975.0, 
+    "sum": 52225500.0, 
+    "weighted": 15708887955.600006
+  }, 
+  "WToLNu_0J_13TeV-amcatnloFXFX-pythia8-2016": {
+    "eff": 40304422.0, 
+    "neg": 4653482.0, 
+    "negfrac": 0.09379866952316147, 
+    "pos": 44957904.0, 
+    "sum": 49611386.0, 
+    "weighted": 2878965957091.625
+  }, 
+  "WToLNu_0J_13TeV-amcatnloFXFX-pythia8-ext1-2016": {
+    "eff": 40207967.0, 
+    "neg": 4643038.0, 
+    "negfrac": 0.09381003689676351, 
+    "pos": 44851005.0, 
+    "sum": 49494043.0, 
+    "weighted": 2872080119702.25
+  }, 
+  "WToLNu_1J_13TeV-amcatnloFXFX-pythia8-2016": {
+    "eff": 19436105.0, 
+    "neg": 10998240.0, 
+    "negfrac": 0.26544904210055925, 
+    "pos": 30434345.0, 
+    "sum": 41432585.0, 
+    "weighted": 1806172326120.5312
+  }, 
+  "WToLNu_2J_13TeV-amcatnloFXFX-pythia8-ext4-2016": {
+    "eff": 58531776.0, 
+    "neg": 70231679.0, 
+    "negfrac": 0.35293164002693656, 
+    "pos": 128763455.0, 
+    "sum": 198995134.0, 
+    "weighted": 3964221630251.2266
+  }
 }
