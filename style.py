@@ -159,9 +159,9 @@ def makeCMSText(x1,y1,additionalText=None,dx=0.088):
         rootObj.append(pTextAdd)
         pTextAdd.Draw("Same")
     
-def makeLumiText(x1,y1):
+def makeLumiText(x1,y1, lumi):
     pText = ROOT.TPaveText(x1,y1,x1,y1,"NDC")
-    pText.AddText("36 fb#lower[-0.8]{#scale[0.7]{-1}}")
+    pText.AddText(str(lumi)+" fb#lower[-0.8]{#scale[0.7]{-1}}")
     pText.SetTextFont(63)
     pText.SetTextSize(31)
     pText.SetTextAlign(33)
