@@ -159,7 +159,7 @@ def makeCMSText(x1,y1,additionalText=None,dx=0.088):
         rootObj.append(pTextAdd)
         pTextAdd.Draw("Same")
     
-def makeLumiText(x1,y1, lumi):
+def makeLumiText(x1, y1, lumi, year):
     pText = ROOT.TPaveText(x1,y1,x1,y1,"NDC")
     pText.AddText(str(lumi)+" fb#lower[-0.8]{#scale[0.7]{-1}}")
     pText.SetTextFont(63)
@@ -167,12 +167,20 @@ def makeLumiText(x1,y1, lumi):
     pText.SetTextAlign(33)
     rootObj.append(pText)
     pText.Draw("Same")
+    pYear = ROOT.TPaveText(x1+0.11,y1,x1+0.11,y1,"NDC")
+    pYear.AddText("(%s)" % (year))
+    pYear.SetTextFont(13)
+    pYear.SetTextSize(31)
+    pYear.SetTextAlign(33)
+    rootObj.append(pYear)
+    pYear.Draw("Same")
+
  
 def makeText(x1,y1,x2,y2,text):
     pText = ROOT.TPaveText(x1,y1,x1,y1,"NDC")
     pText.AddText(text)
     pText.SetTextFont(43)
-    pText.SetTextSize(28)
+    pText.SetTextSize(25)
     pText.SetTextAlign(11)
     rootObj.append(pText)
     pText.Draw("SAME")

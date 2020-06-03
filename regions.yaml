@@ -1,0 +1,4 @@
+- ["mu1mu2jet_met_CR_", "(MET_pt > 100.)*(dimuon_mass < 80.)", "p_{T}^{miss} > 100 GeV, m(#mu#mu) < 80 GeV"]
+- ["mu1mu2jet_DY_CR_", "(dimuon_mass > 90.)*(dimuon_mass < 110.)", "90 < m(#mu#mu) < 110 GeV"]
+- ["mu1mu2jet_met_CR_lowJet_", "(MET_pt > 100.)*(dimuon_mass < 80.)*(nselectedJets_nominal < 7)", "p_{T}^{miss} > 100 GeV, m(#mu#mu) < 80 GeV, n_{Jet} #leq 6"]
+- ["mu1mu2jet_DY_CR_lowJet_", "(dimuon_mass > 90.)*(dimuon_mass < 110.)*(nselectedJets_nominal < 7)", "90 < m(#mu#mu) < 110 GeV, n_{Jet} #leq 6"]
