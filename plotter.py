@@ -1,5 +1,6 @@
 from style import *
 import style
+import sys
 import ROOT
 import math
 import os 
@@ -12,6 +13,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--variable", action="store", dest="variable")
 parser.add_argument("-r", "--region", action="store", dest="region")
 parser.add_argument("-y", "--year", action="store", dest="year")
+#parser.add_argument("-d", "--data", action="store", dest="data_type")
 args = parser.parse_args()
 variable_number = int(args.variable)
 region_number = int(args.region)
@@ -22,7 +24,6 @@ with open("variables.yaml") as yaml_file:
     line = lines[variable_number]
     variable_infos = yaml.load(line, Loader=yaml.FullLoader)[0]
     print(variable_infos[0])
-
 with open("regions.yaml") as yaml_file:
     lines = yaml_file.readlines()
     line = lines[region_number]
@@ -32,11 +33,21 @@ with open("regions.yaml") as yaml_file:
     draw_text = category_infos[2]
     print(category, weight, draw_text)
 
+global data_type
+if "el1" in category:
+    data_type = "Electron"
+elif "mu1" in category:
+    data_type = "Muon"
+else:
+    print("unknown data")
+    sys.exit(-1)
+
+
 print(year)
 
 
 # path to processed nanoAOD ntuples
-ntuple_path = "/vols/cms/vc1117/LLP/nanoAOD_friends/HNL/26May20_30GeV"
+ntuple_path = "/vols/cms/vc1117/LLP/nanoAOD_friends/HNL/10Jun20"
 lumi = {"2016": 35.88, "2017": 41.53, "2018": 59.74}
 
 def find_xsec(path, xsecs):
@@ -122,7 +133,18 @@ class Variable:
 
         line = ROOT.TLine(self.xmin, 1, self.xmax, 1)
         line.Draw("SAME")
-        self.hist_ratio.Draw("P SAME")
+        makeText(0.1, 0.2, 0.2, 0.3, "data/MC = {0:.3g}".format(self.data.Integral()/self.sumMC.Integral()))
+
+        for ibin in range(self.hist_ratio.GetNbinsX()):
+            e = self.data.GetBinError(ibin+1)
+            m = self.data.GetBinContent(ibin+1)
+            if m>0.0:
+                self.hist_ratio.SetBinError(ibin+1,e/m)
+            else:
+                self.hist_ratio.SetBinError(ibin+1,0)
+        
+        self.hist_ratio.Draw("PE SAME")
+
         for ibin in range(self.sumMC.GetNbinsX()):
             c = self.sumMC.GetBinCenter(ibin+1)
             w = self.sumMC.GetBinWidth(ibin+1)
@@ -141,14 +163,14 @@ class Variable:
                 box2.SetFillColor(ROOT.kGray)
                 rootObj.append(box2)
                 box2.Draw("SameL")
+
         canvas.cd()
         self.leg.Draw("SAME")
-        makeCMSText(0.13, 0.97,additionalText="Simulation Preliminary")
-        makeText(0.12, 0.80, 0.3, 0.80, draw_text)
-        makeText(0.15, 0.75, 0.3, 0.75, "#mu_{1} #mu_{2} (OS)" )
+        makeCMSText(0.13, 0.97,additionalText="Preliminary")
+        makeText(0.15, 0.80, 0.3, 0.80, draw_text)
         makeLumiText(0.8, 0.97, lumi[year], year)
-        canvas.SaveAs("/vols/cms/vc1117/LLP/plots_30GeV/"+suffix+self.varexp+"_"+year+"_.pdf")
-        canvas.SaveAs("/vols/cms/vc1117/LLP/plots_30GeV/"+suffix+self.varexp+"_"+year+"_.png")
+        canvas.SaveAs("/vols/cms/vc1117/LLP/plots/"+suffix+self.varexp+"_"+year+"_.pdf")
+        canvas.SaveAs("/vols/cms/vc1117/LLP/plots/"+suffix+self.varexp+"_"+year+"_.png")
 
 # This class prepares a given sample by scaling to int. luminosity
 class Sample:
@@ -165,16 +187,26 @@ class Sample:
                 self.sum_weight += yields[path]
         self.rdf = ROOT.RDataFrame("Friends", self.file_list) \
                 .Filter("nselectedJets_nominal > 0") \
-                .Filter("dimuon_mass > 20") \
-                .Filter("dimuon_charge == -1") \
-                .Filter("nlooseMuons == 1") \
+                .Filter("nvetoFwdJets_nominal == 0") \
+                .Filter("dilepton_mass > 20") \
                 .Filter("ntightMuon == 1") \
-                .Filter("nlepJet_nominal == 1")
+                .Filter("nlooseMuons == 1") \
+                .Filter("nleadingLepton == 1") \
+                .Filter("nsubleadingLepton == 1")
+                #.Filter("nlepJet_nominal == 1")
         if self.isMC:
-            self.rdf = self.rdf.Define("weightLumi", "IsoMuTrigger_weight_trigger_nominal*MET_filter*tightMuon_weight_iso_nominal*tightMuon_weight_id_nominal*looseMuons_weight_id_nominal*puweight*genweight*%s*1000.0*%s/%s" %(lumi[year], find_xsec(path, xsecs), self.sum_weight))
+            self.rdf = self.rdf.Define("weightLumi", "MET_filter*puweight*genweight*%s*1000.0*%s/%s" %(lumi[year], find_xsec(path, xsecs), self.sum_weight))
+            if data_type == "Electron":
+                self.rdf = self.rdf.Define("weight", "weightLumi*IsoElectronTrigger_flag*tightElectron_weight_id_nominal")
+            elif data_type == "Muon":
+                self.rdf = self.rdf.Define("weight", "weightLumi*IsoMuTrigger_weight_trigger_nominal*IsoMuTrigger_flag*tightMuon_weight_iso_nominal*tightMuon_weight_id_nominal")
+            print(path, find_xsec(path, xsecs), self.sum_weight)
         else:
-            self.rdf = self.rdf.Define("weightLumi", "1")
-        self.rdf = self.rdf.Define(category, "weightLumi*%s" %(weight))
+            if data_type == "Electron":
+                self.rdf = self.rdf.Define("weight", "IsoElectronTrigger_flag")
+            elif data_type == "Muon":
+                self.rdf = self.rdf.Define("weight", "IsoMuTrigger_flag")
+        self.rdf = self.rdf.Define(category, "weight*%s" %(weight))
 
         self.hists = []
         print("RDF "+name+ " has entries: "+str(self.rdf.Count().GetValue()))
@@ -243,6 +275,7 @@ else:
 if year == "2016":
     ttsemilep = Sample("ttsemilep", ["TTToSemiLeptonic_TuneCP5_PSweights_13TeV-powheg-pythia8-2016"], year=year)
     ttdilep = Sample("ttdilep", ["TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8-2016"], year=year)
+    tthad = Sample("tthad", ["TTToHadronic_TuneCP5_PSweights_13TeV-powheg-pythia8-2016"], year=year)
     st_t_top = Sample("st_t_top", ["ST_t-channel_top_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8_TuneCUETP8M1-2016"], year=year)
     st_t_antitop = Sample("st_t_antitop", ["ST_t-channel_antitop_4f_inclusiveDecays_13TeV-powhegV2-madspin-pythia8-2016"], year=year)
     st_tW_top = Sample("st_tW_top", ["ST_tW_top_5f_inclusiveDecays_13TeV-powheg-pythia8_TuneCUETP8M1-2016"], year=year)
@@ -251,6 +284,7 @@ if year == "2016":
 elif year == "2017":
     ttsemilep = Sample("ttsemilep", ["TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8_ext1-2017"], year=year)
     ttdilep = Sample("ttdilep", ["TTTo2L2Nu_TuneCP5_PSweights_13TeV-powheg-pythia8-2017"], year=year)
+    tthad = Sample("tthad", ["TTToHadronic_TuneCP5_13TeV-powheg-pythia8-2017"], year=year)
     st_t_top = Sample("st_t_top", ["ST_t-channel_top_4f_inclusiveDecays_TuneCP5_13TeV-powhegV2-madspin-pythia8-2017"], year=year)
     st_t_antitop = Sample("st_t_antitop", ["ST_t-channel_antitop_4f_inclusiveDecays_TuneCP5_13TeV-powhegV2-madspin-pythia8-2017"], year=year)
     st_tW_top = Sample("st_tW_top", ["ST_tW_top_5f_inclusiveDecays_TuneCP5_PSweights_13TeV-powheg-pythia8-2017"], year=year)
@@ -259,6 +293,7 @@ elif year == "2017":
 elif year == "2018":
     ttsemilep = Sample("ttsemilep", ["TTToSemiLeptonic_TuneCP5_13TeV-powheg-pythia8-2018"], year=year)
     ttdilep = Sample("ttdilep", ["TTTo2L2Nu_TuneCP5_13TeV-powheg-pythia8-2018"], year=year)
+    tthad = Sample("tthad", ["TTToHadronic_TuneCP5_13TeV-powheg-pythia8-2018"], year=year)
     st_t_top = Sample("st_t_top", ["ST_t-channel_top_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8-2018"], year=year)
     st_t_antitop = Sample("st_t_antitop", ["ST_t-channel_antitop_4f_InclusiveDecays_TuneCP5_13TeV-powheg-madspin-pythia8-2018"], year=year)
     st_tW_top = Sample("st_tW_top" ,["ST_tW_top_5f_inclusiveDecays_TuneCP5_13TeV-powheg-pythia8-2018"], year=year)
@@ -292,33 +327,33 @@ dyjets = Process("DY+Jets", "DY+Jets", "#1976d2")
 dyjets.add(dy10to50, dy50)
 
 tt = Process("ttbar", "t#bar{t}/st",  "#ef5350")
-tt.add(ttsemilep, ttdilep)
+tt.add(ttsemilep, ttdilep, tthad)
 tt.add(st_t_top, st_t_antitop, st_tW_top, st_tW_antitop)
 
 qcd = Process("qcd", "QCD", "#bdbdbd")
 qcd.add(qcd_15to20, qcd_20to30, qcd_30to50, qcd_50to80, qcd_80to120, qcd_120to170, qcd_170to300, qcd_300to470, qcd_470to600, qcd_600to800, qcd_800to1000, qcd_1000toInf)
 
 if year == "2016":
-    runb = Sample("RunBv2", ["SingleMuon_Run2016B_ver2"], isMC=False)
-    runc = Sample("RunC", ["SingleMuon_Run2016C"], isMC=False)
-    rund = Sample("RunD", ["SingleMuon_Run2017D"], isMC=False)
-    rune = Sample("RunE", ["SingleMuon_Run2016E"], isMC=False)
-    runf = Sample("RunF", ["SingleMuon_Run2016F"], isMC=False)
-    rung = Sample("RunG", ["SingleMuon_Run2016G"], isMC=False)
-    runh = Sample("RunH", ["SingleMuon_Run2016H"], isMC=False)
+    runb = Sample("RunBv2", ["Single{}_Run2016B_ver2".format(data_type)], isMC=False)
+    runc = Sample("RunC", ["Single{}_Run2016C".format(data_type)], isMC=False)
+    rund = Sample("RunD", ["Single{}_Run2016D".format(data_type)], isMC=False)
+    rune = Sample("RunE", ["Single{}_Run2016E".format(data_type)], isMC=False)
+    runf = Sample("RunF", ["Single{}_Run2016F".format(data_type)], isMC=False)
+    rung = Sample("RunG", ["Single{}_Run2016G".format(data_type)], isMC=False)
+    runh = Sample("RunH", ["Single{}_Run2016H".format(data_type)], isMC=False)
 
 elif year == "2017":
-    runb = Sample("RunB", ["SingleMuon_Run2017B"], isMC=False)
-    runc = Sample("RunC", ["SingleMuon_Run2017C"], isMC=False)
-    rund = Sample("RunD", ["SingleMuon_Run2017D"], isMC=False)
-    rune = Sample("RunE", ["SingleMuon_Run2017E"], isMC=False)
-    runf = Sample("RunF", ["SingleMuon_Run2017F"], isMC=False)
+    runb = Sample("RunB", ["Single{}_Run2017B".format(data_type)], isMC=False)
+    runc = Sample("RunC", ["Single{}_Run2017C".format(data_type)], isMC=False)
+    rund = Sample("RunD", ["Single{}_Run2017D".format(data_type)], isMC=False)
+    rune = Sample("RunE", ["Single{}_Run2017E".format(data_type)], isMC=False)
+    runf = Sample("RunF", ["Single{}_Run2017F".format(data_type)], isMC=False)
 
 elif year == "2018":
-    runa = Sample("RunA", ["SingleMuon_Run2018A"], isMC=False)
-    runb = Sample("RunB", ["SingleMuon_Run2018B"], isMC=False)
-    runc = Sample("RunC", ["SingleMuon_Run2018C"], isMC=False)
-    rund = Sample("RunD", ["SingleMuon_Run2018D"], isMC=False)
+    runa = Sample("RunA", ["Single{}_Run2018A".format(data_type).replace("SingleElectron", "EGamma")], isMC=False)
+    runb = Sample("RunB", ["Single{}_Run2018B".format(data_type).replace("SingleElectron", "EGamma")], isMC=False)
+    runc = Sample("RunC", ["Single{}_Run2018C".format(data_type).replace("SingleElectron", "EGamma")], isMC=False)
+    rund = Sample("RunD", ["Single{}_Run2018D".format(data_type).replace("SingleElectron", "EGamma")], isMC=False)
 
 data = Process("data", "data", "#000000")
 
